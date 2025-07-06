@@ -14,3 +14,6 @@ CREATE TABLE blogs (
 	title VARCHAR(50) NOT NULL,
 	uid TEXT NOT NULL REFERENCES users ON DELETE CASCADE
 );
+
+ALTER TABLE "public"."users"
+ADD COLUMN "timezone" text NOT NULL DEFAULT 'Asia/Singapore';

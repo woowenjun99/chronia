@@ -13,6 +13,8 @@ public class User {
 
     private String username;
 
+    private String timezone;
+
     public String getUid() {
         return uid;
     }
@@ -51,5 +53,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone == null ? null : timezone.trim();
     }
 }

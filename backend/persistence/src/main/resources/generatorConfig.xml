@@ -35,13 +35,13 @@ password="secret">
 </javaClientGenerator>
 
 
-<!--<table tableName="users" domainObjectName="User" >-->
-<!--    <property name="useActualColumnNames" value="false"/>-->
-<!--</table>-->
-
-<table tableName="blogs" domainObjectName="Blog" >
+<table tableName="users" domainObjectName="User" >
     <property name="useActualColumnNames" value="false"/>
 </table>
+
+<!--<table tableName="blogs" domainObjectName="Blog" >-->
+<!--    <property name="useActualColumnNames" value="false"/>-->
+<!--</table>-->
 
 </context>
 </generatorConfiguration>

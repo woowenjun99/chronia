@@ -434,6 +434,76 @@ public class UserExample {
             addCriterion("username not between", value1, value2, "username");
             return (Criteria) this;
         }
+
+        public Criteria andTimezoneIsNull() {
+            addCriterion("timezone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneIsNotNull() {
+            addCriterion("timezone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneEqualTo(String value) {
+            addCriterion("timezone =", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneNotEqualTo(String value) {
+            addCriterion("timezone <>", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneGreaterThan(String value) {
+            addCriterion("timezone >", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneGreaterThanOrEqualTo(String value) {
+            addCriterion("timezone >=", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneLessThan(String value) {
+            addCriterion("timezone <", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneLessThanOrEqualTo(String value) {
+            addCriterion("timezone <=", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneLike(String value) {
+            addCriterion("timezone like", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneNotLike(String value) {
+            addCriterion("timezone not like", value, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneIn(List<String> values) {
+            addCriterion("timezone in", values, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneNotIn(List<String> values) {
+            addCriterion("timezone not in", values, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneBetween(String value1, String value2) {
+            addCriterion("timezone between", value1, value2, "timezone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTimezoneNotBetween(String value1, String value2) {
+            addCriterion("timezone not between", value1, value2, "timezone");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
