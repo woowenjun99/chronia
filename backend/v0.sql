@@ -7,13 +7,17 @@ CREATE TABLE users (
 );
 
 CREATE TABLE blogs (
-	context TEXT NOT NULL,
+	content TEXT NOT NULL,
 	date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	date_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	date TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	description TEXT NOT NULL,
 	id BIGSERIAL PRIMARY KEY,
+	tags TEXT,
 	title VARCHAR(50) NOT NULL,
 	uid TEXT NOT NULL REFERENCES users ON DELETE CASCADE
 );
+
 
 ALTER TABLE "public"."users"
 ADD COLUMN "timezone" text NOT NULL DEFAULT 'Asia/Singapore';

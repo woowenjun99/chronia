@@ -6,6 +6,9 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
     <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="uid" jdbcType="VARCHAR" property="uid" />
   </resultMap>
@@ -68,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, content, date_created, date_updated, title, uid
+    id, content, date_created, date_updated, date, description, tags, title, uid
   </sql>
   <select id="selectByExample" parameterType="com.chronia.persistence.models.BlogExample" resultMap="BaseResultMap">
     select
@@ -102,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="com.chronia.persistence.models.Blog">
     insert into blogs (id, content, date_created, 
-      date_updated, title, uid
-      )
+      date_updated, date, description, 
+      tags, title, uid)
     values (#{id,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, 
-      #{dateUpdated,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}
-      )
+      #{dateUpdated,jdbcType=TIMESTAMP}, #{date,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, 
+      #{tags,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chronia.persistence.models.Blog">
     insert into blogs
@@ -122,6 +125,15 @@
       </if>
       <if test="dateUpdated != null">
         date_updated,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="tags != null">
+        tags,
       </if>
       <if test="title != null">
         title,
@@ -142,6 +154,15 @@
       </if>
       <if test="dateUpdated != null">
         #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -172,6 +193,15 @@
       <if test="row.dateUpdated != null">
         date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
       </if>
+      <if test="row.date != null">
+        date = #{row.date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
+      </if>
+      <if test="row.tags != null">
+        tags = #{row.tags,jdbcType=VARCHAR},
+      </if>
       <if test="row.title != null">
         title = #{row.title,jdbcType=VARCHAR},
       </if>
@@ -189,6 +219,9 @@
       content = #{row.content,jdbcType=VARCHAR},
       date_created = #{row.dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
+      date = #{row.date,jdbcType=TIMESTAMP},
+      description = #{row.description,jdbcType=VARCHAR},
+      tags = #{row.tags,jdbcType=VARCHAR},
       title = #{row.title,jdbcType=VARCHAR},
       uid = #{row.uid,jdbcType=VARCHAR}
     <if test="example != null">
@@ -207,6 +240,15 @@
       <if test="dateUpdated != null">
         date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
       </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
@@ -221,6 +263,9 @@
     set content = #{content,jdbcType=VARCHAR},
       date_created = #{dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      date = #{date,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}

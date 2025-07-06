@@ -11,6 +11,12 @@ public class Blog {
 
     private Date dateUpdated;
 
+    private Date date;
+
+    private String description;
+
+    private String tags;
+
     private String title;
 
     private String uid;
@@ -45,6 +51,30 @@ public class Blog {
 
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags == null ? null : tags.trim();
     }
 
     public String getTitle() {

@@ -2,14 +2,12 @@ package com.chronia.app.controller;
 
 import com.chronia.app.model.ChroniaException;
 import com.chronia.app.model.dto.CreateBlogDTO;
+import com.chronia.app.model.vo.GetBlogsWithPaginationVO;
 import com.chronia.app.service.BlogService;
 
 import lombok.AllArgsConstructor;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
@@ -22,5 +20,11 @@ public class BlogController {
     @PostMapping
     public void createBlog(@Valid @RequestBody CreateBlogDTO request) throws ChroniaException {
         blogService.createBlog(request);
+    }
+
+    @GetMapping
+    public GetBlogsWithPaginationVO getBlogsWithPagination(
+            @RequestParam("pageSize") Long pageSize, @RequestParam("pageNo") Long pageNo) throws ChroniaException {
+        return blogService.getBlogsWithPagination(pageSize, pageNo);
     }
 }

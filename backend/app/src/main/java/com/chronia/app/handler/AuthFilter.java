@@ -53,6 +53,12 @@ public class AuthFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String uri = request.getRequestURI();
-        return "/users/register".equalsIgnoreCase(uri) || "options".equalsIgnoreCase(request.getMethod());
+        boolean isRegistrationEndpoint = "/users/register".equalsIgnoreCase(uri);
+        boolean isGetAllBlogsEndpoint = uri.equalsIgnoreCase("/blogs") && request.getMethod().equalsIgnoreCase("get");
+        boolean isPreflight = "options".equalsIgnoreCase(request.getMethod());
+        log.info("isGetAllBlogsEndpoint: {}", isGetAllBlogsEndpoint);
+        return isRegistrationEndpoint
+                || isPreflight
+                || isGetAllBlogsEndpoint;
     }
 }
