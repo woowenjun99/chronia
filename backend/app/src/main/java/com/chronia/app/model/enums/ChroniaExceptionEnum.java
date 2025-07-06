@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum ChroniaExceptionEnum {
-    UNAUTHORIZED(401, "Please login");
+    UNAUTHORIZED(401, "Please login"),
+    CONFLICT(409, "%s already exists");
 
     private final String errorMessage;
     private final Integer httpStatusCode;

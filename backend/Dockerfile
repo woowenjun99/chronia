@@ -2,7 +2,7 @@
 FROM maven:3.9.9 AS build
 WORKDIR /app
 COPY . .
-RUN mvn -B package --file pom.xml -Dmybatis.generator.skip=true
+RUN mvn -B package --file pom.xml
 
 # ---------- Stage 2: Runtime ----------
 FROM openjdk:17
