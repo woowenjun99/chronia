@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,7 +38,7 @@ export default function PersonalHomePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/placeholder.svg?height=32&width=32" />
+              <AvatarImage src="/linkedin.jpeg" />
               <AvatarFallback>WJ</AvatarFallback>
             </Avatar>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
@@ -63,12 +64,12 @@ export default function PersonalHomePage() {
             >
               Projects
             </a>
-            <a
-              href="#blog"
+            <Link
+              href="/blog"
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
             >
               Blog
-            </a>
+            </Link>
             <ThemeToggle />
             <Button asChild size="sm">
               <a href="#contact">Get In Touch</a>
@@ -103,9 +104,9 @@ export default function PersonalHomePage() {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                A Backend Developer and Technical Writer passionate about
-                building scalable web applications and sharing content and
-                knowledge through code and content.
+                A Backend Developer passionate about building scalable web
+                applications and sharing content and knowledge through code and
+                content.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" asChild className="text-lg px-8 py-3">
@@ -153,7 +154,7 @@ export default function PersonalHomePage() {
                 <div className="w-80 h-80 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 dark:from-blue-500 dark:to-purple-700 p-1">
                   <Avatar className="w-full h-full">
                     <AvatarImage
-                      src="/placeholder.svg?height=320&width=320"
+                      src="/linkedin.jpeg"
                       className="rounded-full"
                     />
                     <AvatarFallback className="text-6xl">WJ</AvatarFallback>
@@ -177,27 +178,19 @@ export default function PersonalHomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of
-                experience building web applications that solve real-world
-                problems. I love working with modern technologies like React,
-                Next.js, and Node.js.
+                I graduated from National University of Singapore with a
+                Bachelors Degree in Engineering (Computer Engineering). I enjoy
+                building products to solve problems and have a lot of fun with
+                coding.
               </p>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                When I'm not coding, you'll find me writing technical articles,
-                contributing to open source projects, or exploring the latest
-                trends in web development.
+                I interned at DBS as a Software Engineer in Test and TikTok as a
+                Backend Engineer in the Data Platform and am currently a Full
+                Time Backend Engineer at OKX, one of the biggest crypto
+                exchange.
               </p>
               <div className="flex flex-wrap gap-2">
-                {[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Node.js",
-                  "Python",
-                  "AWS",
-                  "Docker",
-                  "PostgreSQL",
-                ].map((skill) => (
+                {["Spring Boot", "NextJS"].map((skill) => (
                   <Badge key={skill} variant="secondary" className="text-sm">
                     {skill}
                   </Badge>
@@ -213,7 +206,7 @@ export default function PersonalHomePage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 dark:text-white">
-                        5+ Years
+                        1 Years
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300">
                         Professional Experience
@@ -230,7 +223,7 @@ export default function PersonalHomePage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 dark:text-white">
-                        50+ Projects
+                        3 Projects
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300">
                         Successfully Delivered
@@ -247,7 +240,7 @@ export default function PersonalHomePage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 dark:text-white">
-                        Articles
+                        0 Articles
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300">
                         Technical Blog Posts
@@ -507,10 +500,10 @@ export default function PersonalHomePage() {
       <section id="contact" className="py-20 px-4 bg-white dark:bg-slate-900">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-            Let's Work Together
+            Lets Work Together
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            I'm always interested in new opportunities and exciting projects.
+            I am always interested in new opportunities and exciting projects.
             Whether you have a question or just want to say hi, feel free to
             reach out!
           </p>
@@ -545,7 +538,7 @@ export default function PersonalHomePage() {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Avatar className="h-6 w-6">
-              <AvatarImage src="/placeholder.svg?height=24&width=24" />
+              <AvatarImage src="/linkedin.jpeg" />
               <AvatarFallback>WJ</AvatarFallback>
             </Avatar>
             <span className="text-xl font-bold">Wen Jun</span>
