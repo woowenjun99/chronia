@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: chronia
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 1
+    url: ${DATABASE_URL}
+logging:
+  level:
+    com.wenjun.astra_persistence.mappers: DEBUG
+firebaseServiceAccount: ${FIREBASE_SERVICE_ACCOUNT}
+baseUrl: ${BASE_URL}
