@@ -2,6 +2,8 @@ CREATE TABLE users (
 	date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	date_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	email TEXT NOT NULL UNIQUE,
+	profile_photo TEXT NOT NULL,
+	timezone TEXT NOT NULL DEFAULT 'Asia/Singapore',
 	uid TEXT PRIMARY KEY,
 	username TEXT NOT NULL UNIQUE
 );
@@ -17,7 +19,3 @@ CREATE TABLE blogs (
 	title VARCHAR(50) NOT NULL,
 	uid TEXT NOT NULL REFERENCES users ON DELETE CASCADE
 );
-
-
-ALTER TABLE "public"."users"
-ADD COLUMN "timezone" text NOT NULL DEFAULT 'Asia/Singapore';

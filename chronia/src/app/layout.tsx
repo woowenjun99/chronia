@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ClientComponent } from "@/components/client-component";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClientComponent>{children}</ClientComponent>
+          <ClientComponent>
+            {children}
+            <Toaster richColors />
+          </ClientComponent>
         </ThemeProvider>
       </body>
     </html>

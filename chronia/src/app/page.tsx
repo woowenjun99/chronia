@@ -543,9 +543,7 @@ export default function PersonalHomePage() {
             </Avatar>
             <span className="text-xl font-bold">Wen Jun</span>
           </div>
-          <p className="text-gray-400 mb-4">
-            Full-Stack Developer & Technical Writer
-          </p>
+          <p className="text-gray-400 mb-4">Backend Developer</p>
           <div className="flex justify-center space-x-4 mb-4">
             <a
               href={GITHUB_LINK}

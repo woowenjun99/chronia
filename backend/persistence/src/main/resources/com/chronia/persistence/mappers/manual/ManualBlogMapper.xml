@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chronia.persistence.mappers.manual.ManualBlogMapper">
+    <select id="getBlogsWithPagination" resultType="com.chronia.persistence.models.manual.ManualBlog">
+        select
+            blogs.content,
+            blogs.title,
+            users.username,
+            users.profile_photo_url
+        from blogs
+        join users
+        on users.uid = blogs.uid
+        limit #{pageSize} offset #{pageNo}
+    </select>
+</mapper>

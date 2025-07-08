@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +21,8 @@ import {
   Calendar,
   ArrowLeft,
 } from "lucide-react";
+import useSWR from "swr";
+import { getBlogsWithPagination } from "@/services/blogs/data/blog-repository";
 
 // Mock data for demonstration
 const blogPosts = [
@@ -96,6 +99,8 @@ const blogPosts = [
 ];
 
 export default function BlogHomePage() {
+  const { data, isLoading } = useSWR(["/blogs", 20, 0], getBlogsWithPagination);
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       {/* Header */}
@@ -138,7 +143,7 @@ export default function BlogHomePage() {
               </Button>
               <Avatar>
                 <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarFallback>WJ</AvatarFallback>
               </Avatar>
             </div>
           </div>

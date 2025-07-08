@@ -7,6 +7,7 @@ import com.chronia.app.service.BlogService;
 import com.chronia.app.util.ThreadLocalUser;
 import com.chronia.external.model.AuthenticatedUser;
 import com.chronia.persistence.models.Blog;
+import com.chronia.persistence.models.manual.ManualBlog;
 import com.chronia.persistence.repository.BlogRepository;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +36,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public GetBlogsWithPaginationVO getBlogsWithPagination(Long pageSize, Long pageNo) throws ChroniaException {
         Long total = blogRepository.getTotalBlogs();
-        List<Blog> blogs = blogRepository.getAllBlogs();
+        List<ManualBlog> blogs = blogRepository.getBlogsWithPagination(pageSize, pageNo);
         return GetBlogsWithPaginationVO
                 .builder()
                 .blogs(blogs)
