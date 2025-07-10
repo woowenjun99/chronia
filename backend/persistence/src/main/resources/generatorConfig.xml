@@ -35,11 +35,15 @@ password="secret">
 </javaClientGenerator>
 
 
-<!--<table tableName="users" domainObjectName="User" >-->
-<!--    <property name="useActualColumnNames" value="false"/>-->
-<!--</table>-->
+<table tableName="users" domainObjectName="UserEntity" >
+    <property name="useActualColumnNames" value="false"/>
+</table>
 
-<table tableName="blogs" domainObjectName="Blog" >
+<table tableName="blogs" domainObjectName="BlogEntity" >
+    <property name="useActualColumnNames" value="false"/>
+</table>
+
+<table tableName="likes" domainObjectName="LikeEntity" >
     <property name="useActualColumnNames" value="false"/>
 </table>
 

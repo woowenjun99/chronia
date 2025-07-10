@@ -2,7 +2,7 @@ package com.chronia.persistence.models;
 
 import java.util.Date;
 
-public class User {
+public class UserEntity {
     private String uid;
 
     private Date dateCreated;

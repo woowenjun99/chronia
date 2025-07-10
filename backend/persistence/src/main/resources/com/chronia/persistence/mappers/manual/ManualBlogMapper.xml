@@ -6,7 +6,7 @@
             blogs.content,
             blogs.title,
             users.username,
-            users.profile_photo_url
+            users.profile_photo_url as profilePhotoUrl
         from blogs
         join users
         on users.uid = blogs.uid

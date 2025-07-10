@@ -6,7 +6,7 @@ import com.chronia.app.model.enums.ChroniaExceptionEnum;
 import com.chronia.app.service.UserService;
 import com.chronia.external.model.AuthenticatedUser;
 import com.chronia.external.service.FirebaseClient;
-import com.chronia.persistence.models.User;
+import com.chronia.persistence.models.UserEntity;
 import com.chronia.persistence.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
             throw new ChroniaException(ChroniaExceptionEnum.CONFLICT, "Email");
         }
         AuthenticatedUser authenticatedUser = firebaseClient.createUser(request.getEmail(), request.getPassword());
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail(request.getEmail());
         user.setUid(authenticatedUser.getUid());
         userRepository.createUser(user);

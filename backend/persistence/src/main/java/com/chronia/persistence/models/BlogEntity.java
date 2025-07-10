@@ -2,7 +2,7 @@ package com.chronia.persistence.models;
 
 import java.util.Date;
 
-public class Blog {
+public class BlogEntity {
     private Long id;
 
     private String content;

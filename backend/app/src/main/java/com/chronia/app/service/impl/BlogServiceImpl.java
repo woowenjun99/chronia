@@ -6,7 +6,7 @@ import com.chronia.app.model.vo.GetBlogsWithPaginationVO;
 import com.chronia.app.service.BlogService;
 import com.chronia.app.util.ThreadLocalUser;
 import com.chronia.external.model.AuthenticatedUser;
-import com.chronia.persistence.models.Blog;
+import com.chronia.persistence.models.BlogEntity;
 import com.chronia.persistence.models.manual.ManualBlog;
 import com.chronia.persistence.repository.BlogRepository;
 
@@ -26,7 +26,7 @@ public class BlogServiceImpl implements BlogService {
         AuthenticatedUser authenticatedUser = ThreadLocalUser.getAuthenticatedUser();
         String userId = authenticatedUser.getUid();
 
-        Blog blog = new Blog();
+        BlogEntity blog = new BlogEntity();
         blog.setContent(request.getContent());
         blog.setTitle(request.getTitle());
         blog.setUid(userId);

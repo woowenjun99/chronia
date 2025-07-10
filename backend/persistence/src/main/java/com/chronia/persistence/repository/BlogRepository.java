@@ -1,11 +1,11 @@
 package com.chronia.persistence.repository;
 
-import com.chronia.persistence.mappers.BlogMapper;
+import com.chronia.persistence.mappers.BlogEntityMapper;
 import com.chronia.persistence.mappers.manual.ManualBlogMapper;
-import com.chronia.persistence.models.Blog;
-import com.chronia.persistence.models.BlogExample;
-
+import com.chronia.persistence.models.BlogEntity;
+import com.chronia.persistence.models.BlogEntityExample;
 import com.chronia.persistence.models.manual.ManualBlog;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,19 +15,19 @@ import jakarta.annotation.Resource;
 @Repository
 public class BlogRepository {
     @Resource
-    private BlogMapper blogMapper;
+    private BlogEntityMapper blogEntityMapper;
 
     @Resource
     private ManualBlogMapper manualBlogMapper;
 
-    public void createBlog(Blog blog) {
-        blogMapper.insertSelective(blog);
+    public void createBlog(BlogEntity blog) {
+        blogEntityMapper.insertSelective(blog);
     }
 
     public Long getTotalBlogs() {
-        BlogExample example = new BlogExample();
+        BlogEntityExample example = new BlogEntityExample();
         example.createCriteria();
-        return blogMapper.countByExample(example);
+        return blogEntityMapper.countByExample(example);
     }
 
     public List<ManualBlog> getBlogsWithPagination(Long pageSize, Long pageNo) {

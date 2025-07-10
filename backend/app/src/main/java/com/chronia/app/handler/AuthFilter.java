@@ -56,7 +56,6 @@ public class AuthFilter extends OncePerRequestFilter {
         boolean isRegistrationEndpoint = "/users/register".equalsIgnoreCase(uri);
         boolean isGetAllBlogsEndpoint = uri.equalsIgnoreCase("/blogs") && request.getMethod().equalsIgnoreCase("get");
         boolean isPreflight = "options".equalsIgnoreCase(request.getMethod());
-        log.info("isGetAllBlogsEndpoint: {}", isGetAllBlogsEndpoint);
         return isRegistrationEndpoint
                 || isPreflight
                 || isGetAllBlogsEndpoint;
