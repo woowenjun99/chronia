@@ -56,7 +56,10 @@ const BlogCard: FC<BlogCardProps> = ({ blog }) => {
 };
 
 export default function BlogPreviewSection() {
-  const { isLoading, data } = useSWR(["/blogs", 3, 1], getBlogsWithPagination);
+  const { isLoading, data } = useSWR(
+    ["/blogs", 3, 1, "admin"],
+    getBlogsWithPagination
+  );
 
   return (
     <section id="blog" className="py-20 px-4 bg-gray-50 dark:bg-slate-800">

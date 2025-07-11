@@ -15,6 +15,8 @@ public class UserEntity {
 
     private String timezone;
 
+    private String profilePhotoUrl;
+
     public String getUid() {
         return uid;
     }
@@ -61,5 +63,13 @@ public class UserEntity {
 
     public void setTimezone(String timezone) {
         this.timezone = timezone == null ? null : timezone.trim();
+    }
+
+    public String getProfilePhotoUrl() {
+        return profilePhotoUrl;
+    }
+
+    public void setProfilePhotoUrl(String profilePhotoUrl) {
+        this.profilePhotoUrl = profilePhotoUrl == null ? null : profilePhotoUrl.trim();
     }
 }

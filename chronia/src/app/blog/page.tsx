@@ -99,7 +99,10 @@ const blogPosts = [
 ];
 
 export default function BlogHomePage() {
-  const { data, isLoading } = useSWR(["/blogs", 20, 0], getBlogsWithPagination);
+  const { data, isLoading } = useSWR(
+    ["/blogs", 20, 0, "admin"],
+    getBlogsWithPagination
+  );
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">

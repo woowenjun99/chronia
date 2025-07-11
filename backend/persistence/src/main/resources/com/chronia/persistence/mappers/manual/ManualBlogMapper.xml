@@ -4,6 +4,7 @@
     <select id="getBlogsWithPagination" resultType="com.chronia.persistence.models.manual.ManualBlog">
         select
             blogs.content,
+            blogs.id,
             blogs.title,
             users.username,
             users.profile_photo_url as profilePhotoUrl
@@ -11,7 +12,7 @@
         join users
             on users.uid = blogs.uid
         where blogs.uid = #{userId}
+        order by blogs.id
         limit #{pageSize} offset #{offset}
-        order by id
     </select>
 </mapper>

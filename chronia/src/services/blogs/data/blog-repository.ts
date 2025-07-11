@@ -5,12 +5,13 @@ export async function getBlogsWithPagination([
   endpoint,
   pageSize,
   pageNo,
+  userId,
 ]: string[]) {
   const response = await axiosInstance.get<
     null,
     BaseResponse<GetBlogsWithPaginationVO>
   >(endpoint, {
-    params: { pageSize, pageNo },
+    params: { pageSize, pageNo, userId },
   });
   return response.data.data;
 }

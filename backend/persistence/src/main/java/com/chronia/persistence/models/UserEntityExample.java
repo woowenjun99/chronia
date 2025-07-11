@@ -504,6 +504,76 @@ public class UserEntityExample {
             addCriterion("timezone not between", value1, value2, "timezone");
             return (Criteria) this;
         }
+
+        public Criteria andProfilePhotoUrlIsNull() {
+            addCriterion("profile_photo_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlIsNotNull() {
+            addCriterion("profile_photo_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlEqualTo(String value) {
+            addCriterion("profile_photo_url =", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlNotEqualTo(String value) {
+            addCriterion("profile_photo_url <>", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlGreaterThan(String value) {
+            addCriterion("profile_photo_url >", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("profile_photo_url >=", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlLessThan(String value) {
+            addCriterion("profile_photo_url <", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlLessThanOrEqualTo(String value) {
+            addCriterion("profile_photo_url <=", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlLike(String value) {
+            addCriterion("profile_photo_url like", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlNotLike(String value) {
+            addCriterion("profile_photo_url not like", value, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlIn(List<String> values) {
+            addCriterion("profile_photo_url in", values, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlNotIn(List<String> values) {
+            addCriterion("profile_photo_url not in", values, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlBetween(String value1, String value2) {
+            addCriterion("profile_photo_url between", value1, value2, "profilePhotoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProfilePhotoUrlNotBetween(String value1, String value2) {
+            addCriterion("profile_photo_url not between", value1, value2, "profilePhotoUrl");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

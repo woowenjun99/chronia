@@ -2,7 +2,7 @@ CREATE TABLE users (
 	date_created TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	date_updated TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	email TEXT NOT NULL UNIQUE,
-	profile_photo TEXT NOT NULL,
+	profile_photo_url TEXT NOT NULL,
 	timezone TEXT NOT NULL DEFAULT 'Asia/Singapore',
 	uid TEXT PRIMARY KEY,
 	username TEXT NOT NULL UNIQUE

@@ -8,6 +8,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="timezone" jdbcType="VARCHAR" property="timezone" />
+    <result column="profile_photo_url" jdbcType="VARCHAR" property="profilePhotoUrl" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid, date_created, date_updated, email, username, timezone
+    uid, date_created, date_updated, email, username, timezone, profile_photo_url
   </sql>
   <select id="selectByExample" parameterType="com.chronia.persistence.models.UserEntityExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.chronia.persistence.models.UserEntity">
     insert into users (uid, date_created, date_updated, 
-      email, username, timezone
-      )
+      email, username, timezone, 
+      profile_photo_url)
     values (#{uid,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateUpdated,jdbcType=TIMESTAMP}, 
-      #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{timezone,jdbcType=VARCHAR}
-      )
+      #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{timezone,jdbcType=VARCHAR}, 
+      #{profilePhotoUrl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chronia.persistence.models.UserEntity">
     insert into users
@@ -129,6 +130,9 @@
       <if test="timezone != null">
         timezone,
       </if>
+      <if test="profilePhotoUrl != null">
+        profile_photo_url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="timezone != null">
         #{timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="profilePhotoUrl != null">
+        #{profilePhotoUrl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="row.timezone != null">
         timezone = #{row.timezone,jdbcType=VARCHAR},
       </if>
+      <if test="row.profilePhotoUrl != null">
+        profile_photo_url = #{row.profilePhotoUrl,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
       email = #{row.email,jdbcType=VARCHAR},
       username = #{row.username,jdbcType=VARCHAR},
-      timezone = #{row.timezone,jdbcType=VARCHAR}
+      timezone = #{row.timezone,jdbcType=VARCHAR},
+      profile_photo_url = #{row.profilePhotoUrl,jdbcType=VARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="timezone != null">
         timezone = #{timezone,jdbcType=VARCHAR},
       </if>
+      <if test="profilePhotoUrl != null">
+        profile_photo_url = #{profilePhotoUrl,jdbcType=VARCHAR},
+      </if>
     </set>
     where uid = #{uid,jdbcType=VARCHAR}
   </update>
@@ -222,7 +236,8 @@
       date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
       email = #{email,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
-      timezone = #{timezone,jdbcType=VARCHAR}
+      timezone = #{timezone,jdbcType=VARCHAR},
+      profile_photo_url = #{profilePhotoUrl,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=VARCHAR}
   </update>
 </mapper>
