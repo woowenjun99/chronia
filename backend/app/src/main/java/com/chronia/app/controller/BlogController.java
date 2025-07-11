@@ -7,7 +7,12 @@ import com.chronia.app.service.BlogService;
 
 import lombok.AllArgsConstructor;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
@@ -24,7 +29,10 @@ public class BlogController {
 
     @GetMapping
     public GetBlogsWithPaginationVO getBlogsWithPagination(
-            @RequestParam("pageSize") Long pageSize, @RequestParam("pageNo") Long pageNo) throws ChroniaException {
-        return blogService.getBlogsWithPagination(pageSize, pageNo);
+            @RequestParam("pageSize") Long pageSize,
+            @RequestParam("pageNo") Long pageNo,
+            @RequestParam("userId") String userId
+    ) {
+        return blogService.getBlogsWithPagination(pageSize, pageNo, userId);
     }
 }

@@ -17,9 +17,9 @@ public interface BlogService {
      * Gets paginated blogs with the total results
      *
      * @param pageSize The size of the response
-     * @param pageNo The offset
+     * @param pageNo The page number
+     * @param userId The user id of the person's blog to return
      * @return
-     * @throws ChroniaException
      */
-    GetBlogsWithPaginationVO getBlogsWithPagination(Long pageSize, Long pageNo) throws ChroniaException;
+    GetBlogsWithPaginationVO getBlogsWithPagination(Long pageSize, Long pageNo, String userId);
 }

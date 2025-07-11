@@ -34,9 +34,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public GetBlogsWithPaginationVO getBlogsWithPagination(Long pageSize, Long pageNo) throws ChroniaException {
+    public GetBlogsWithPaginationVO getBlogsWithPagination(Long pageSize, Long pageNo, String userId) {
         Long total = blogRepository.getTotalBlogs();
-        List<ManualBlog> blogs = blogRepository.getBlogsWithPagination(pageSize, pageNo);
+        List<ManualBlog> blogs = blogRepository.getBlogsWithPagination(pageSize, pageNo, userId);
         return GetBlogsWithPaginationVO
                 .builder()
                 .blogs(blogs)

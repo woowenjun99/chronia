@@ -9,7 +9,9 @@
             users.profile_photo_url as profilePhotoUrl
         from blogs
         join users
-        on users.uid = blogs.uid
-        limit #{pageSize} offset #{pageNo}
+            on users.uid = blogs.uid
+        where blogs.uid = #{userId}
+        limit #{pageSize} offset #{offset}
+        order by id
     </select>
 </mapper>

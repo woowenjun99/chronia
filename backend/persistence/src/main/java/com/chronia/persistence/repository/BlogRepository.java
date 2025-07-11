@@ -30,7 +30,11 @@ public class BlogRepository {
         return blogEntityMapper.countByExample(example);
     }
 
-    public List<ManualBlog> getBlogsWithPagination(Long pageSize, Long pageNo) {
-        return manualBlogMapper.getBlogsWithPagination(pageSize, pageSize * pageNo - pageSize);
+    public List<ManualBlog> getBlogsWithPagination(Long pageSize, Long pageNo, String userId) {
+        return manualBlogMapper.getBlogsWithPagination(
+                pageSize,
+                pageSize * pageNo - pageSize,
+                userId
+        );
     }
 }

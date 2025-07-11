@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface ManualBlogMapper {
     List<ManualBlog> getBlogsWithPagination(
-            @Param("pageSize") Long pageSize, @Param("pageNo") Long pageNo);
+            @Param("pageSize") Long pageSize,
+            @Param("offset") Long offset,
+            @Param("userId") String userId);
 }
