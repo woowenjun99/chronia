@@ -62,7 +62,7 @@ export default function BlogPreviewSection() {
   );
 
   return (
-    <section id="blog" className="py-20 px-4 bg-gray-50 dark:bg-slate-800">
+    <section id="blog" className="py-20 px-4 bg-white dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">

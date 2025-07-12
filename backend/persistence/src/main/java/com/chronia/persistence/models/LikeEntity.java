@@ -7,6 +7,8 @@ public class LikeEntity {
 
     private Long blogId;
 
+    private Long commentId;
+
     private Date dateCreated;
 
     private Date dateUpdated;
@@ -27,6 +29,14 @@ public class LikeEntity {
 
     public void setBlogId(Long blogId) {
         this.blogId = blogId;
+    }
+
+    public Long getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
     }
 
     public Date getDateCreated() {

@@ -11,11 +11,9 @@ public class UserEntity {
 
     private String email;
 
-    private String username;
-
     private String timezone;
 
-    private String profilePhotoUrl;
+    private String username;
 
     public String getUid() {
         return uid;
@@ -49,14 +47,6 @@ public class UserEntity {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
     public String getTimezone() {
         return timezone;
     }
@@ -65,11 +55,11 @@ public class UserEntity {
         this.timezone = timezone == null ? null : timezone.trim();
     }
 
-    public String getProfilePhotoUrl() {
-        return profilePhotoUrl;
+    public String getUsername() {
+        return username;
     }
 
-    public void setProfilePhotoUrl(String profilePhotoUrl) {
-        this.profilePhotoUrl = profilePhotoUrl == null ? null : profilePhotoUrl.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

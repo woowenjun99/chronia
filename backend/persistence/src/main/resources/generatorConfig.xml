@@ -39,13 +39,17 @@ password="secret">
     <property name="useActualColumnNames" value="false"/>
 </table>
 
-<!--<table tableName="blogs" domainObjectName="BlogEntity" >-->
-<!--    <property name="useActualColumnNames" value="false"/>-->
-<!--</table>-->
+<table tableName="blogs" domainObjectName="BlogEntity" >
+    <property name="useActualColumnNames" value="false"/>
+</table>
 
-<!--<table tableName="likes" domainObjectName="LikeEntity" >-->
-<!--    <property name="useActualColumnNames" value="false"/>-->
-<!--</table>-->
+<table tableName="likes" domainObjectName="LikeEntity" >
+    <property name="useActualColumnNames" value="false"/>
+</table>
+
+    <table tableName="comments" domainObjectName="CommentEntity" >
+        <property name="useActualColumnNames" value="false"/>
+    </table>
 
 </context>
 </generatorConfiguration>

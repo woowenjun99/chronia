@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.chronia.persistence.models.LikeEntity">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="blog_id" jdbcType="BIGINT" property="blogId" />
+    <result column="comment_id" jdbcType="BIGINT" property="commentId" />
     <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
     <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated" />
     <result column="uid" jdbcType="VARCHAR" property="uid" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, blog_id, date_created, date_updated, uid
+    id, blog_id, comment_id, date_created, date_updated, uid
   </sql>
   <select id="selectByExample" parameterType="com.chronia.persistence.models.LikeEntityExample" resultMap="BaseResultMap">
     select
@@ -100,10 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.chronia.persistence.models.LikeEntity">
-    insert into likes (id, blog_id, date_created, 
-      date_updated, uid)
-    values (#{id,jdbcType=BIGINT}, #{blogId,jdbcType=BIGINT}, #{dateCreated,jdbcType=TIMESTAMP}, 
-      #{dateUpdated,jdbcType=TIMESTAMP}, #{uid,jdbcType=VARCHAR})
+    insert into likes (id, blog_id, comment_id, 
+      date_created, date_updated, uid
+      )
+    values (#{id,jdbcType=BIGINT}, #{blogId,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, 
+      #{dateCreated,jdbcType=TIMESTAMP}, #{dateUpdated,jdbcType=TIMESTAMP}, #{uid,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.chronia.persistence.models.LikeEntity">
     insert into likes
@@ -113,6 +116,9 @@
       </if>
       <if test="blogId != null">
         blog_id,
+      </if>
+      <if test="commentId != null">
+        comment_id,
       </if>
       <if test="dateCreated != null">
         date_created,
@@ -130,6 +136,9 @@
       </if>
       <if test="blogId != null">
         #{blogId,jdbcType=BIGINT},
+      </if>
+      <if test="commentId != null">
+        #{commentId,jdbcType=BIGINT},
       </if>
       <if test="dateCreated != null">
         #{dateCreated,jdbcType=TIMESTAMP},
@@ -157,6 +166,9 @@
       <if test="row.blogId != null">
         blog_id = #{row.blogId,jdbcType=BIGINT},
       </if>
+      <if test="row.commentId != null">
+        comment_id = #{row.commentId,jdbcType=BIGINT},
+      </if>
       <if test="row.dateCreated != null">
         date_created = #{row.dateCreated,jdbcType=TIMESTAMP},
       </if>
@@ -175,6 +187,7 @@
     update likes
     set id = #{row.id,jdbcType=BIGINT},
       blog_id = #{row.blogId,jdbcType=BIGINT},
+      comment_id = #{row.commentId,jdbcType=BIGINT},
       date_created = #{row.dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
       uid = #{row.uid,jdbcType=VARCHAR}
@@ -187,6 +200,9 @@
     <set>
       <if test="blogId != null">
         blog_id = #{blogId,jdbcType=BIGINT},
+      </if>
+      <if test="commentId != null">
+        comment_id = #{commentId,jdbcType=BIGINT},
       </if>
       <if test="dateCreated != null">
         date_created = #{dateCreated,jdbcType=TIMESTAMP},
@@ -203,6 +219,7 @@
   <update id="updateByPrimaryKey" parameterType="com.chronia.persistence.models.LikeEntity">
     update likes
     set blog_id = #{blogId,jdbcType=BIGINT},
+      comment_id = #{commentId,jdbcType=BIGINT},
       date_created = #{dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
       uid = #{uid,jdbcType=VARCHAR}

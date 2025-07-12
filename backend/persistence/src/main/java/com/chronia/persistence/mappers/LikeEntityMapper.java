@@ -2,8 +2,10 @@ package com.chronia.persistence.mappers;
 
 import com.chronia.persistence.models.LikeEntity;
 import com.chronia.persistence.models.LikeEntityExample;
-import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LikeEntityMapper {
     long countByExample(LikeEntityExample example);

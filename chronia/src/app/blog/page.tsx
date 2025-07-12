@@ -31,8 +31,6 @@ const blogPosts = [
     title: "Getting Started with Next.js 15",
     excerpt:
       "Learn about the latest features and improvements in Next.js 15, including the new App Router and Server Components.",
-    author: "John Doe",
-    authorAvatar: "/placeholder.svg?height=40&width=40",
     date: "2024-01-15",
     readTime: "5 min read",
     likes: 24,
@@ -45,8 +43,6 @@ const blogPosts = [
     title: "Building Scalable APIs with Node.js",
     excerpt:
       "Best practices for creating robust and scalable backend services using Node.js and Express.",
-    author: "John Doe",
-    authorAvatar: "/placeholder.svg?height=40&width=40",
     date: "2024-01-12",
     readTime: "8 min read",
     likes: 32,
@@ -59,8 +55,6 @@ const blogPosts = [
     title: "TypeScript Best Practices for 2024",
     excerpt:
       "Essential TypeScript patterns and practices that will make your code more maintainable and type-safe.",
-    author: "John Doe",
-    authorAvatar: "/placeholder.svg?height=40&width=40",
     date: "2024-01-10",
     readTime: "6 min read",
     likes: 18,
@@ -73,8 +67,6 @@ const blogPosts = [
     title: "The Art of Minimalist Design",
     excerpt:
       "Exploring how less can be more in modern web design and user experience.",
-    author: "John Doe",
-    authorAvatar: "/placeholder.svg?height=40&width=40",
     date: "2024-01-08",
     readTime: "3 min read",
     likes: 15,
@@ -87,8 +79,6 @@ const blogPosts = [
     title: "Mastering React Hooks",
     excerpt:
       "Deep dive into React Hooks and how to use them effectively in your applications.",
-    author: "John Doe",
-    authorAvatar: "/placeholder.svg?height=40&width=40",
     date: "2024-01-05",
     readTime: "7 min read",
     likes: 28,
@@ -145,7 +135,7 @@ export default function BlogHomePage() {
                 </Link>
               </Button>
               <Avatar>
-                <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                <AvatarImage src="/linkedin.jpeg" />
                 <AvatarFallback>WJ</AvatarFallback>
               </Avatar>
             </div>
@@ -168,13 +158,13 @@ export default function BlogHomePage() {
               <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center space-x-2">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                    <AvatarImage src="/linkedin.jpeg" />
                     <AvatarFallback>JD</AvatarFallback>
                   </Avatar>
                   <span>John Doe</span>
                 </div>
                 <span>•</span>
-                <span>{blogPosts.length} articles published</span>
+                <span>{data?.total ?? 0} articles published</span>
                 <span>•</span>
                 <span>Updated weekly</span>
               </div>
@@ -189,14 +179,12 @@ export default function BlogHomePage() {
                   <CardHeader>
                     <div className="flex items-center space-x-4 mb-4">
                       <Avatar>
-                        <AvatarImage
-                          src={post.authorAvatar || "/placeholder.svg"}
-                        />
+                        <AvatarImage src="/linkedin.jpeg" />
                         <AvatarFallback>JD</AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="font-medium text-gray-900 dark:text-white">
-                          {post.author}
+                          Wen Jun
                         </p>
                         <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-2">
                           <Calendar className="h-4 w-4" />
@@ -261,7 +249,7 @@ export default function BlogHomePage() {
                 <CardContent>
                   <div className="flex items-center space-x-3 mb-4">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage src="/placeholder.svg?height=48&width=48" />
+                      <AvatarImage src="/linkedin.jpeg" />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div>

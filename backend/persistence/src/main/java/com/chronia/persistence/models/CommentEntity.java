@@ -2,22 +2,16 @@ package com.chronia.persistence.models;
 
 import java.util.Date;
 
-public class BlogEntity {
+public class CommentEntity {
     private Long id;
 
-    private String content;
+    private Long blogId;
 
     private Date dateCreated;
 
     private Date dateUpdated;
 
-    private Date date;
-
     private String description;
-
-    private String tags;
-
-    private String title;
 
     private String uid;
 
@@ -29,12 +23,12 @@ public class BlogEntity {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public Long getBlogId() {
+        return blogId;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setBlogId(Long blogId) {
+        this.blogId = blogId;
     }
 
     public Date getDateCreated() {
@@ -53,36 +47,12 @@ public class BlogEntity {
         this.dateUpdated = dateUpdated;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags == null ? null : tags.trim();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
     }
 
     public String getUid() {

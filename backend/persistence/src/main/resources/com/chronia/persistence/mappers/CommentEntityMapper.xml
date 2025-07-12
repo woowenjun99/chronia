@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chronia.persistence.mappers.UserEntityMapper">
-  <resultMap id="BaseResultMap" type="com.chronia.persistence.models.UserEntity">
-    <id column="uid" jdbcType="VARCHAR" property="uid" />
+<mapper namespace="com.chronia.persistence.mappers.CommentEntityMapper">
+  <resultMap id="BaseResultMap" type="com.chronia.persistence.models.CommentEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="blog_id" jdbcType="BIGINT" property="blogId" />
     <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated" />
     <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="timezone" jdbcType="VARCHAR" property="timezone" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid, date_created, date_updated, email, timezone, username
+    id, blog_id, date_created, date_updated, description, uid
   </sql>
-  <select id="selectByExample" parameterType="com.chronia.persistence.models.UserEntityExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.chronia.persistence.models.CommentEntityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from users
+    from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,35 +84,38 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from users
-    where uid = #{uid,jdbcType=VARCHAR}
+    from comments
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from users
-    where uid = #{uid,jdbcType=VARCHAR}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from comments
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.chronia.persistence.models.UserEntityExample">
-    delete from users
+  <delete id="deleteByExample" parameterType="com.chronia.persistence.models.CommentEntityExample">
+    delete from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.chronia.persistence.models.UserEntity">
-    insert into users (uid, date_created, date_updated, 
-      email, timezone, username
+  <insert id="insert" parameterType="com.chronia.persistence.models.CommentEntity">
+    insert into comments (id, blog_id, date_created, 
+      date_updated, description, uid
       )
-    values (#{uid,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{dateUpdated,jdbcType=TIMESTAMP}, 
-      #{email,jdbcType=VARCHAR}, #{timezone,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{blogId,jdbcType=BIGINT}, #{dateCreated,jdbcType=TIMESTAMP}, 
+      #{dateUpdated,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chronia.persistence.models.UserEntity">
-    insert into users
+  <insert id="insertSelective" parameterType="com.chronia.persistence.models.CommentEntity">
+    insert into comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        uid,
+      <if test="id != null">
+        id,
+      </if>
+      <if test="blogId != null">
+        blog_id,
       </if>
       <if test="dateCreated != null">
         date_created,
@@ -120,19 +123,19 @@
       <if test="dateUpdated != null">
         date_updated,
       </if>
-      <if test="email != null">
-        email,
+      <if test="description != null">
+        description,
       </if>
-      <if test="timezone != null">
-        timezone,
-      </if>
-      <if test="username != null">
-        username,
+      <if test="uid != null">
+        uid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        #{uid,jdbcType=VARCHAR},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="blogId != null">
+        #{blogId,jdbcType=BIGINT},
       </if>
       <if test="dateCreated != null">
         #{dateCreated,jdbcType=TIMESTAMP},
@@ -140,28 +143,28 @@
       <if test="dateUpdated != null">
         #{dateUpdated,jdbcType=TIMESTAMP},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
-      <if test="timezone != null">
-        #{timezone,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.chronia.persistence.models.UserEntityExample" resultType="java.lang.Long">
-    select count(*) from users
+  <select id="countByExample" parameterType="com.chronia.persistence.models.CommentEntityExample" resultType="java.lang.Long">
+    select count(*) from comments
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update users
+    update comments
     <set>
-      <if test="row.uid != null">
-        uid = #{row.uid,jdbcType=VARCHAR},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.blogId != null">
+        blog_id = #{row.blogId,jdbcType=BIGINT},
       </if>
       <if test="row.dateCreated != null">
         date_created = #{row.dateCreated,jdbcType=TIMESTAMP},
@@ -169,14 +172,11 @@
       <if test="row.dateUpdated != null">
         date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
       </if>
-      <if test="row.email != null">
-        email = #{row.email,jdbcType=VARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
       </if>
-      <if test="row.timezone != null">
-        timezone = #{row.timezone,jdbcType=VARCHAR},
-      </if>
-      <if test="row.username != null">
-        username = #{row.username,jdbcType=VARCHAR},
+      <if test="row.uid != null">
+        uid = #{row.uid,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="example != null">
@@ -184,45 +184,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update users
-    set uid = #{row.uid,jdbcType=VARCHAR},
+    update comments
+    set id = #{row.id,jdbcType=BIGINT},
+      blog_id = #{row.blogId,jdbcType=BIGINT},
       date_created = #{row.dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{row.dateUpdated,jdbcType=TIMESTAMP},
-      email = #{row.email,jdbcType=VARCHAR},
-      timezone = #{row.timezone,jdbcType=VARCHAR},
-      username = #{row.username,jdbcType=VARCHAR}
+      description = #{row.description,jdbcType=VARCHAR},
+      uid = #{row.uid,jdbcType=VARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chronia.persistence.models.UserEntity">
-    update users
+  <update id="updateByPrimaryKeySelective" parameterType="com.chronia.persistence.models.CommentEntity">
+    update comments
     <set>
+      <if test="blogId != null">
+        blog_id = #{blogId,jdbcType=BIGINT},
+      </if>
       <if test="dateCreated != null">
         date_created = #{dateCreated,jdbcType=TIMESTAMP},
       </if>
       <if test="dateUpdated != null">
         date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="timezone != null">
-        timezone = #{timezone,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
       </if>
     </set>
-    where uid = #{uid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chronia.persistence.models.UserEntity">
-    update users
-    set date_created = #{dateCreated,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="com.chronia.persistence.models.CommentEntity">
+    update comments
+    set blog_id = #{blogId,jdbcType=BIGINT},
+      date_created = #{dateCreated,jdbcType=TIMESTAMP},
       date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
-      email = #{email,jdbcType=VARCHAR},
-      timezone = #{timezone,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR}
-    where uid = #{uid,jdbcType=VARCHAR}
+      description = #{description,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

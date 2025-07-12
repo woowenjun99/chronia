@@ -30,6 +30,44 @@ const GITHUB_LINK = "https://github.com/woowenjun99";
 const LINKEDIN_PROFILE_LINK = "https://www.linkedin.com/in/wen-jun-woo";
 const EMAIL_LINK = "mailto:wjranger99@gmail.com";
 
+// Static Data: To update when there are any changes
+// Do not need to store in the DB as I do not need to change it frequently
+const experiences = [
+  {
+    company: "OKX",
+    role: "Backend Engineer",
+    description: "A backend engineer in the AI Department",
+    start: "July 2025",
+    end: "Present",
+    badges: ["AI Engineer", "Java", "MySQL", "Spring Boot"],
+  },
+  {
+    company: "ByteDance",
+    role: "Backend Engineer",
+    description:
+      "As a Backend Engineer in the Data Management Suite, we migrate data from one region to another using our in-house workflow engine.",
+    start: "January 2025",
+    end: "May 2025",
+    badges: [
+      "Data Migration",
+      "Java",
+      "MySQL",
+      "Spring Boot",
+      "Apache Hive",
+      "Apache Spark",
+    ],
+  },
+  {
+    company: "DBS",
+    role: "Software Engineer in Test",
+    description:
+      "As a Software Engineer in Test in the Advancing DBS with AI (ADA), we perform behavioural testing on the components of ADA.",
+    start: "May 2024",
+    end: "October 2024",
+    badges: ["Data Quality", "Python", "MySQL", "Behave"],
+  },
+];
+
 export default function PersonalHomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
@@ -264,231 +302,44 @@ export default function PersonalHomePage() {
             Experience
           </h2>
           <div className="space-y-8">
-            <Card className="dark:bg-slate-900 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl dark:text-white">
-                      Senior Full-Stack Developer
-                    </CardTitle>
-                    <CardDescription className="text-lg dark:text-gray-300">
-                      TechCorp Inc.
-                    </CardDescription>
-                  </div>
-                  <Badge variant="outline">2022 - Present</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Lead development of scalable web applications serving 100K+
-                  users. Architected microservices infrastructure and mentored
-                  junior developers.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Next.js</Badge>
-                  <Badge variant="secondary">AWS</Badge>
-                  <Badge variant="secondary">Docker</Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="dark:bg-slate-900 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl dark:text-white">
-                      Full-Stack Developer
-                    </CardTitle>
-                    <CardDescription className="text-lg dark:text-gray-300">
-                      StartupXYZ
-                    </CardDescription>
-                  </div>
-                  <Badge variant="outline">2020 - 2022</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Built the entire web platform from scratch, implementing
-                  real-time features and payment processing. Grew user base from
-                  0 to 10K users.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">Vue.js</Badge>
-                  <Badge variant="secondary">Node.js</Badge>
-                  <Badge variant="secondary">MongoDB</Badge>
-                  <Badge variant="secondary">Stripe</Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="dark:bg-slate-900 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl dark:text-white">
-                      Frontend Developer
-                    </CardTitle>
-                    <CardDescription className="text-lg dark:text-gray-300">
-                      WebAgency Pro
-                    </CardDescription>
-                  </div>
-                  <Badge variant="outline">2019 - 2020</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Developed responsive websites and web applications for various
-                  clients. Focused on performance optimization and user
-                  experience.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">SASS</Badge>
-                  <Badge variant="secondary">WordPress</Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-white dark:bg-slate-900">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Featured Projects
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow dark:bg-slate-800 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg dark:text-white">
-                    E-Commerce Platform
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-gray-400" />
-                </div>
-                <CardDescription className="dark:text-gray-300">
-                  Full-featured online store with payment processing, inventory
-                  management, and admin dashboard.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">Next.js</Badge>
-                  <Badge variant="outline">Stripe</Badge>
-                  <Badge variant="outline">PostgreSQL</Badge>
-                </div>
-                <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <a
-                      href={GITHUB_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a
-                      href="https://example.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow dark:bg-slate-800 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg dark:text-white">
-                    Task Management App
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-gray-400" />
-                </div>
-                <CardDescription className="dark:text-gray-300">
-                  Collaborative project management tool with real-time updates,
-                  team collaboration, and analytics.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">React</Badge>
-                  <Badge variant="outline">Socket.io</Badge>
-                  <Badge variant="outline">Node.js</Badge>
-                </div>
-                <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <a
-                      href={GITHUB_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a
-                      href="https://example.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow dark:bg-slate-800 dark:border-slate-700">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg dark:text-white">
-                    Weather Dashboard
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-gray-400" />
-                </div>
-                <CardDescription className="dark:text-gray-300">
-                  Beautiful weather application with forecasts, maps, and
-                  location-based recommendations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="outline">Vue.js</Badge>
-                  <Badge variant="outline">OpenWeather API</Badge>
-                  <Badge variant="outline">Charts.js</Badge>
-                </div>
-                <div className="flex space-x-2">
-                  <Button size="sm" variant="outline" asChild>
-                    <a
-                      href={GITHUB_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a
-                      href="https://example.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            {experiences.map((experience, index) => {
+              return (
+                <Card
+                  className="dark:bg-slate-900 dark:border-slate-700"
+                  key={index}
+                >
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <CardTitle className="text-xl dark:text-white">
+                          {experience.role}
+                        </CardTitle>
+                        <CardDescription className="text-lg dark:text-gray-300">
+                          {experience.company}
+                        </CardDescription>
+                      </div>
+                      <Badge variant="outline">
+                        {experience.start} - {experience.end}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                      {experience.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {experience.badges.map((badge, index) => {
+                        return (
+                          <Badge key={index} variant="secondary">
+                            {badge}
+                          </Badge>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -497,7 +348,7 @@ export default function PersonalHomePage() {
       <BlogPreviewSection />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-white dark:bg-slate-900">
+      <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-slate-800">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
             Lets Work Together
