@@ -1,15 +1,19 @@
 package com.chronia.persistence.models.manual;
 
+import java.util.Date;
+
 public class ManualBlog {
     private String content;
 
+    private Long comments;
+
+    private Date date;
+
     private Long id;
 
-    private String profilePhotoUrl;
+    private Long likes;
 
     private String title;
-
-    private String username;
 
     public String getContent() {
         return content;
@@ -27,14 +31,6 @@ public class ManualBlog {
         this.id = id;
     }
 
-    public String getProfilePhotoUrl() {
-        return profilePhotoUrl;
-    }
-
-    public void setProfilePhotoUrl(String profilePhotoUrl) {
-        this.profilePhotoUrl = profilePhotoUrl;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -43,11 +39,27 @@ public class ManualBlog {
         this.title = title;
     }
 
-    public String getUsername() {
-        return username;
+    public Long getComments() {
+        return comments;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setComments(Long comments) {
+        this.comments = comments;
+    }
+
+    public Long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Long likes) {
+        this.likes = likes;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

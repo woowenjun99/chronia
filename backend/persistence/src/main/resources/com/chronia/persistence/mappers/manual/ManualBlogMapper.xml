@@ -4,14 +4,28 @@
     <select id="getBlogsWithPagination" resultType="com.chronia.persistence.models.manual.ManualBlog">
         select
             blogs.content,
+            comments_temp.comment_count as comments,
+            blogs.date,
             blogs.id,
-            blogs.title,
-            users.username,
-            users.profile_photo_url as profilePhotoUrl
+            likes_temp.like_count as likes,
+            blogs.title
         from blogs
-        join users
-            on users.uid = blogs.uid
-        where blogs.uid = #{userId}
+        left join (
+            select
+                count(*) as like_count,
+                blog_id
+            from likes
+            group by blog_id
+        ) likes_temp
+            on likes_temp.blog_id = blogs.id
+        left join (
+            select
+                count(*) as comment_count,
+                blog_id
+            from comments
+            group by blog_id
+        ) comments_temp
+            on comments_temp.blog_id = blogs.id
         order by blogs.id
         limit #{pageSize} offset #{offset}
     </select>

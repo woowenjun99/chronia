@@ -18,7 +18,6 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  ExternalLink,
   Code,
   Briefcase,
   Award,
@@ -96,12 +95,6 @@ export default function PersonalHomePage() {
             >
               Experience
             </a>
-            <a
-              href="#projects"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              Projects
-            </a>
             <Link
               href="/blog"
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -113,14 +106,6 @@ export default function PersonalHomePage() {
               <a href="#contact">Get In Touch</a>
             </Button>
           </nav>
-
-          {/* Mobile menu with theme toggle */}
-          <div className="flex md:hidden items-center space-x-2">
-            <ThemeToggle />
-            <Button variant="ghost" size="sm">
-              Menu
-            </Button>
-          </div>
         </div>
       </header>
 

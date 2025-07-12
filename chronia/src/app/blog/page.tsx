@@ -14,83 +14,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
   BookOpen,
-  Search,
   Plus,
   Heart,
   MessageCircle,
   Calendar,
   ArrowLeft,
+  Loader,
 } from "lucide-react";
 import useSWR from "swr";
 import { getBlogsWithPagination } from "@/services/blogs/data/blog-repository";
 
-// Mock data for demonstration
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js 15",
-    excerpt:
-      "Learn about the latest features and improvements in Next.js 15, including the new App Router and Server Components.",
-    date: "2024-01-15",
-    readTime: "5 min read",
-    likes: 24,
-    comments: 8,
-    tags: ["Next.js", "React", "Web Development"],
-    slug: "getting-started-nextjs-15",
-  },
-  {
-    id: 2,
-    title: "Building Scalable APIs with Node.js",
-    excerpt:
-      "Best practices for creating robust and scalable backend services using Node.js and Express.",
-    date: "2024-01-12",
-    readTime: "8 min read",
-    likes: 32,
-    comments: 12,
-    tags: ["Node.js", "API", "Backend"],
-    slug: "building-scalable-apis-nodejs",
-  },
-  {
-    id: 3,
-    title: "TypeScript Best Practices for 2024",
-    excerpt:
-      "Essential TypeScript patterns and practices that will make your code more maintainable and type-safe.",
-    date: "2024-01-10",
-    readTime: "6 min read",
-    likes: 18,
-    comments: 5,
-    tags: ["TypeScript", "Best Practices", "JavaScript"],
-    slug: "typescript-best-practices-2024",
-  },
-  {
-    id: 4,
-    title: "The Art of Minimalist Design",
-    excerpt:
-      "Exploring how less can be more in modern web design and user experience.",
-    date: "2024-01-08",
-    readTime: "3 min read",
-    likes: 15,
-    comments: 7,
-    tags: ["Design", "UX", "Minimalism"],
-    slug: "art-of-minimalist-design",
-  },
-  {
-    id: 5,
-    title: "Mastering React Hooks",
-    excerpt:
-      "Deep dive into React Hooks and how to use them effectively in your applications.",
-    date: "2024-01-05",
-    readTime: "7 min read",
-    likes: 28,
-    comments: 9,
-    tags: ["React", "Hooks", "JavaScript"],
-    slug: "mastering-react-hooks",
-  },
-];
-
 export default function BlogHomePage() {
   const { data, isLoading } = useSWR(
-    ["/blogs", 20, 0, "admin"],
+    ["/blogs", 20, 1, "admin"],
     getBlogsWithPagination
   );
 
@@ -103,7 +39,7 @@ export default function BlogHomePage() {
             <div className="flex items-center space-x-4">
               <Link
                 href="/"
-                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                className=" hidden md:flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <ArrowLeft className="h-5 w-5 mr-2" />
                 Back to Home
@@ -113,16 +49,6 @@ export default function BlogHomePage() {
                 <span className="text-2xl font-bold text-gray-900 dark:text-white">
                   My Blog
                 </span>
-              </div>
-            </div>
-
-            <div className="flex-1 max-w-md mx-8">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <Input
-                  placeholder="Search articles..."
-                  className="pl-10 dark:bg-slate-700 dark:border-slate-600"
-                />
               </div>
             </div>
 
@@ -149,7 +75,7 @@ export default function BlogHomePage() {
           <div className="lg:col-span-3">
             <div className="mb-8">
               <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Welcome to My Blog
+                Welcome to Chronia
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
                 I write about web development, technology trends, and share
@@ -159,9 +85,9 @@ export default function BlogHomePage() {
                 <div className="flex items-center space-x-2">
                   <Avatar className="h-8 w-8">
                     <AvatarImage src="/linkedin.jpeg" />
-                    <AvatarFallback>JD</AvatarFallback>
+                    <AvatarFallback>WJ</AvatarFallback>
                   </Avatar>
-                  <span>John Doe</span>
+                  <span>Wen Jun</span>
                 </div>
                 <span>•</span>
                 <span>{data?.total ?? 0} articles published</span>
@@ -171,69 +97,68 @@ export default function BlogHomePage() {
             </div>
 
             <div className="space-y-8">
-              {blogPosts.map((post) => (
-                <Card
-                  key={post.id}
-                  className="hover:shadow-lg transition-shadow dark:bg-slate-800 dark:border-slate-700"
-                >
-                  <CardHeader>
-                    <div className="flex items-center space-x-4 mb-4">
-                      <Avatar>
-                        <AvatarImage src="/linkedin.jpeg" />
-                        <AvatarFallback>JD</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-medium text-gray-900 dark:text-white">
-                          Wen Jun
-                        </p>
-                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-2">
-                          <Calendar className="h-4 w-4" />
-                          <span>
-                            {new Date(post.date).toLocaleDateString()}
-                          </span>
-                          <span>•</span>
-                          <span>{post.readTime}</span>
+              {isLoading ? (
+                <Loader className="animate-spin" />
+              ) : (
+                (data?.blogs ?? []).map((post) => (
+                  <Card
+                    key={post.id}
+                    className="hover:shadow-lg transition-shadow dark:bg-slate-800 dark:border-slate-700"
+                  >
+                    <CardHeader>
+                      <div className="flex items-center space-x-4 mb-4">
+                        <Avatar>
+                          <AvatarImage src="/linkedin.jpeg" />
+                          <AvatarFallback>JD</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-medium text-gray-900 dark:text-white">
+                            Wen Jun
+                          </p>
+                          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 space-x-2">
+                            <Calendar className="h-4 w-4" />
+                            <span>
+                              {new Date(post.date).toLocaleDateString()}
+                            </span>
+                            <span>•</span>
+                            <span>{Math.ceil(post.content.length / 200)}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <CardTitle className="text-2xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors dark:text-white">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                    </CardTitle>
-                    <CardDescription className="text-lg leading-relaxed dark:text-gray-300">
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-2">
-                        {post.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                      <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                        <div className="flex items-center space-x-1">
-                          <Heart className="h-4 w-4" />
-                          <span>{post.likes}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MessageCircle className="h-4 w-4" />
-                          <span>{post.comments}</span>
+                      <CardTitle className="text-2xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors dark:text-white">
+                        <Link href={`/blog/${post.id}`}>{post.title}</Link>
+                      </CardTitle>
+                      <CardDescription className="text-lg leading-relaxed dark:text-gray-300">
+                        {post.content}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center space-x-1">
+                            <Heart className="h-4 w-4" />
+                            <span>{post.likes}</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <MessageCircle className="h-4 w-4" />
+                            <span>{post.comments}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))
+              )}
             </div>
 
             {/* Load More */}
-            <div className="text-center mt-12">
-              <Button variant="outline" size="lg">
-                Load More Articles
-              </Button>
-            </div>
+            {data?.total !== data?.blogs.length && (
+              <div className="text-center mt-12">
+                <Button variant="outline" size="lg">
+                  Load More Articles
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -250,12 +175,12 @@ export default function BlogHomePage() {
                   <div className="flex items-center space-x-3 mb-4">
                     <Avatar className="h-12 w-12">
                       <AvatarImage src="/linkedin.jpeg" />
-                      <AvatarFallback>JD</AvatarFallback>
+                      <AvatarFallback>WJ</AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-medium dark:text-white">John Doe</p>
+                      <p className="font-medium dark:text-white">Wen Jun</p>
                       <p className="text-sm text-gray-600 dark:text-gray-300">
-                        Full-Stack Developer
+                        Backend Engineer
                       </p>
                     </div>
                   </div>
